@@ -7,9 +7,9 @@
 #include <string.h>
 #include <unistd.h> // Imports "system("cls||clear")" and "system("pause")" function
 void choice(int, int, int, int[]);
+
 void decimalToBinary(int, int[]);
 
-void decimalToOctal(int, int[]);
 void binaryToDecimal(int, int[]);
 
 void main()
@@ -120,50 +120,6 @@ void decimalToBinary(int decimal, int binary_num[])
 
     printf(" in binary");
 }
-//---------------------------------------------------------------------------------------
-//                          CONVERT DECIMAL TO OCTAL
-//---------------------------------------------------------------------------------------
-void decimalToOctal(int decimal, int octal_num[])
-{
-    int *decimalPtr;
-    decimalPtr = &decimal;
-
-    int counter;
-
-    int x = 0;
-
-    system("cls || clear");
-
-    printf("\n\tEnter a number whole number: ");
-    scanf(" %d", &*decimalPtr);
-
-    printf("\nThe decimal number %d is ", *decimalPtr);
-
-    // Input Decimal is '0', binary number is '0'
-    if (*decimalPtr == 0)
-        printf("%d", *decimalPtr);
-
-    // Loops until input decimal is smaller than '0'
-    while (*decimalPtr > 0)
-    {
-        // Counter = remainder of input decimal
-        counter = *decimalPtr % 8;
-
-        // Adds either '1' or '0' to binary_num array
-        octal_num[x] = counter;
-        x++;
-
-        // Divides input decimal by '2'
-        *decimalPtr /= 8;
-    }
-
-    // Prints the binary_num in reverse order (while loop above adds '1' or '0' in reverse order)
-    for (int i = x - 1; i >= 0; i--)
-        printf("%d", octal_num[i]);
-
-    printf(" in octal");
-}
-
 //---------------------------------------------------------------------------------------
 //                          CONVERT BINARY TO DECIMAL
 //---------------------------------------------------------------------------------------
