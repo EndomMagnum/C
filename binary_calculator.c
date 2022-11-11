@@ -10,7 +10,7 @@ void choice(int, int, int, int[]);
 void decimalToBinary(int, int[]);
 
 void decimalToOctal(int, int[]);
-s void binaryToDecimal(int, int[]);
+void binaryToDecimal(int, int[]);
 
 void main()
 {
