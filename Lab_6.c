@@ -28,7 +28,7 @@ int main(void)
         printf("\n\t- Print integer Value");
 
         printf("\n\nPlease select one of the 4 options (1,2,3,4): ");
-        scanf("%d", &choice);
+        scanf(" %d", &choice);
 
         switch (choice)
         {
