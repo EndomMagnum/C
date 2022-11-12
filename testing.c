@@ -13,7 +13,6 @@ void decimalToBinary(int, int[]);
 void decimalToHex(int, char[]);
 
 void binaryToDecimal(int, int[]);
-void binaryToHex(int, int[], char[]);
 
 void main()
 {
@@ -60,8 +59,6 @@ void choice(int base1, int base2, int decimal, int binary_num[], char hex_num[])
                     decimalToBinary(decimal, binary_num);
                 else if (base1 == 10 && base2 == 16)
                     decimalToHex(decimal, hex_num);
-                else if (base1 == 2 && base2 == 16)
-                    binaryToHex(decimal, binary_num, hex_num);
                 else
                     system("cls || clear");
             }
@@ -125,7 +122,7 @@ void decimalToBinary(int decimal, int binary_num[])
     printf(" in binary");
 }
 //---------------------------------------------------------------------------------------
-//                          CONVERT DECIMAL TO HEXADECIMAL
+//                          CONVERT DECIMAL TO HEX
 //---------------------------------------------------------------------------------------
 void decimalToHex(int decimal, char hex_num[])
 {
@@ -154,6 +151,7 @@ void decimalToHex(int decimal, char hex_num[])
         counter = *decimalPtr % 16;
 
         // Depending on what the remainder of counter is, add the value to hex_num
+
         if (counter == 0)
             hex_num[x] = '0';
 
@@ -257,125 +255,4 @@ void binaryToDecimal(int decimal, int binary_num[])
         p++;
     }
     printf(" is %d in decimal", *decimalPtr);
-}
-//---------------------------------------------------------------------------------------
-//                          CONVERT BINARY TO HEXADECIMAL
-//---------------------------------------------------------------------------------------
-void binaryToHex(int decimal, int binary_num[], char hex_num[])
-{
-    int *decimalPtr;
-    decimalPtr = &decimal;
-    // The exponent used to calculate the decimal number
-    int p = 0;
-    // The input number
-    char input[50];
-    //
-    // Binary to decimal
-    //
-    system("cls || clear");
-
-    printf("\tEnter a binary number: ");
-    scanf(" %s", &input);
-    // Creates the exact size of input number
-    int size = strlen(input);
-
-    binary_num[size];
-
-    printf("\nThe binary number ");
-    // Divides all digits from num input and appends each to to a different element in the binary_num array
-    for (int i = 0; i < size; i++)
-    {
-        binary_num[i] = *(input + i);
-        printf("%c", binary_num[i]);
-    }
-    // Starts from the last element in binary_num array
-    for (int i = size - 1; i >= 0; i--)
-    {
-        // char '0' = int 48
-        if (binary_num[i] == 48)
-        {
-        }
-        // char '1' = int 49
-        else if (binary_num[i] == 49)
-            // Decimal + 1 * 2^p e.g( binary number = 111 = (1 × 2²) + (1 × 2¹) + (1 × 2⁰) = (7))
-            *decimalPtr = *decimalPtr + (1 * pow(2, p));
-        // Adds 1 to p to calculate the decimal number
-        p++;
-    }
-    printf(" is ");
-    //
-    // Decimal to Hex
-    //
-    int counter;
-
-    int x = 0;
-    // Input Decimal is '0', hex number is '0'
-    if (*decimalPtr == 0)
-        printf("%d", *decimalPtr);
-
-    // Loops until input decimal is smaller than '0'
-    while (*decimalPtr > 0)
-    {
-        // Counter = remainder of input decimal
-        counter = *decimalPtr % 16;
-
-        // Depending on what the remainder of counter is, add the value to hex_num
-        if (counter == 0)
-            hex_num[x] = '0';
-
-        else if (counter == 1)
-            hex_num[x] = '1';
-
-        else if (counter == 2)
-            hex_num[x] = '2';
-
-        else if (counter == 3)
-            hex_num[x] = '3';
-
-        else if (counter == 4)
-            hex_num[x] = '4';
-
-        else if (counter == 5)
-            hex_num[x] = '5';
-
-        else if (counter == 6)
-            hex_num[x] = '6';
-
-        else if (counter == 7)
-            hex_num[x] = '7';
-
-        else if (counter == 8)
-            hex_num[x] = '8';
-
-        else if (counter == 9)
-            hex_num[x] = '9';
-
-        else if (counter == 10)
-            hex_num[x] = 'A';
-
-        else if (counter == 11)
-            hex_num[x] = 'B';
-
-        else if (counter == 12)
-            hex_num[x] = 'C';
-
-        else if (counter == 13)
-            hex_num[x] = 'D';
-
-        else if (counter == 14)
-            hex_num[x] = 'E';
-
-        else if (counter == 15)
-            hex_num[x] = 'F';
-
-        x++;
-
-        // Divides input decimal by '16'
-        *decimalPtr /= 16;
-    }
-    // Prints the hex_num in reverse order (while loop above adds the values in reverse order)
-    for (int i = x - 1; i >= 0; i--)
-        printf("%c", hex_num[i]);
-
-    printf(" in hexadecimal");
 }
