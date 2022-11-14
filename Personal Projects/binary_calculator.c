@@ -19,7 +19,7 @@ void main()
 {
     system("cls || clear");
 
-    int base1, base2, first_base, second_base;
+    int base1, base2;
 
     // The decimal number
     int decimal = 0;
