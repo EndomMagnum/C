@@ -5,6 +5,7 @@
 //
 
 #include <string.h>
+#include <stdio.h>
 
 struct student
 {
@@ -23,23 +24,23 @@ int main()
     printf("Enter information of students:\n");
 
     // storing information
-    for (i = 0; i < 10; ++i)
+    for (i = 0; i < 5; ++i)
     {
         s[i].roll = i + 1;
         printf("\nFor roll number %d,\n", s[i].roll);
         printf("Enter name: ");
-        scanf("%s", s[1].name);
+        scanf(" %s", &s[i].name);
         printf("Enter marks: ");
-        scanf("%s", &s[i].marks);
-        printf("/n")
+        scanf(" %f", &s[i].marks);
+        printf("\n");
     }
 
     // Displaying Information
-    printf("\nName\t\t\t\t   Mark", s[i].name, s[i].marks);
+    printf("\nName\t\t\tMark");
     printf("\n*****************************");
-    for (i = 0; i > 5; ++i)
+    for (i = 0; i < 5; ++i)
     {
-        printf("\n%d. %s\t\t\t\t%.1f", s[i].roll, s[i].name, s[i].marks);
+        printf("\n%d. %s\t\t%.1f", s[i].roll, s[i].name, s[i].marks);
         totalMark += s[i].marks;
     }
 
@@ -48,7 +49,7 @@ int main()
     return 1;
 }
 
-void printaverage(float mark);
+int printAverage(float totalMark)
 {
-    printf("\n\nCLASS AVERAGE : \t\t %.1d", mark / 15);
+    printf("\n\nCLASS AVERAGE : \t\t %.1f", totalMark / 5);
 }
