@@ -199,6 +199,7 @@ int main()
     while (true)
     {
         menu(counter_p);
+
         int choice;
         int student_num;
         int *student_num_p;
