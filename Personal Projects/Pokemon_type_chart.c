@@ -276,10 +276,53 @@ float doubleTypeEffects(float type_chart[FAIRY + 1][FAIRY + 1])
 
         printf("\n\n\t\tDEFENSE:\n");
 
+        // Prints all types that wont be affected
+        printf("\n\t       No Effect\n");
         for (int i = 0; i < 18; i++)
         {
-            printf("\n\t      %s - %.1f", lookup_table[i].string, type_chart[i][type1_value] * type_chart[i][type2_value]);
+            if (type_chart[i][type1_value] * type_chart[i][type2_value] == 0.0)
+            {
+                printf("\n\t      %s - %.1f", lookup_table[i].string, type_chart[i][type1_value] * type_chart[i][type2_value]);
+            }
         }
+
+        printf("\n\n\t-------------------------\n");
+
+        // Prints all types that wont be very effected
+        printf("\n\t   Not Very Effective\n");
+        for (int i = 0; i < 18; i++)
+        {
+            if (type_chart[i][type1_value] * type_chart[i][type2_value] == 0.5 || type_chart[i][type1_value] * type_chart[i][type2_value] == 0.25)
+            {
+                printf("\n\t      %s - %.1f", lookup_table[i].string, type_chart[i][type1_value] * type_chart[i][type2_value]);
+            }
+        }
+
+        printf("\n\n\t-------------------------\n");
+
+        // Prints all types that will be neutrally effected
+        printf("\n\t\tNeutral\n");
+        for (int i = 0; i < 18; i++)
+        {
+            if (type_chart[i][type1_value] * type_chart[i][type2_value] == 1.0)
+            {
+                printf("\n\t      %s - %.1f", lookup_table[i].string, type_chart[i][type1_value] * type_chart[i][type2_value]);
+            }
+        }
+
+        printf("\n\n\t-------------------------\n");
+
+        // Prints all types that will be super effected
+        printf("\n\t    Super Effective\n");
+        for (int i = 0; i < 18; i++)
+        {
+            if (type_chart[i][type1_value] * type_chart[i][type2_value] == 2.0 || type_chart[i][type1_value] * type_chart[i][type2_value] == 4.0)
+            {
+                printf("\n\t      %s - %.1f", lookup_table[i].string, type_chart[i][type1_value] * type_chart[i][type2_value]);
+            }
+        }
+
+        printf("\n\n\t-------------------------\n");
     }
 
     else
@@ -291,11 +334,9 @@ float doubleTypeEffects(float type_chart[FAIRY + 1][FAIRY + 1])
 
 float singleVsDoubleTypeEffects(float type_chart[FAIRY + 1][FAIRY + 1])
 {
-    char type_input[9];
     char type1_input[9];
     char type2_input[9];
     // Used when converting from string to int to relate to typing num
-    int type_value = -1;
     int type1_value = -1;
     int type2_value = -1;
 
@@ -304,23 +345,11 @@ float singleVsDoubleTypeEffects(float type_chart[FAIRY + 1][FAIRY + 1])
     system("@cls");
 
     printf("Enter the attacking type: ");
-    scanf(" %s", type_input);
-
-    printf("Enter the first defending type: ");
     scanf(" %s", type1_input);
-    printf("Enter the second defending type: ");
+    printf("Enter the defending type: ");
     scanf(" %s", type2_input);
 
     // Search the lookup table for the input string
-    for (int i = 0; i < sizeof(lookup_table) / sizeof(struct LookupTableEntry); i++)
-    {
-        if (strcmp(type_input, lookup_table[i].string) == 0)
-        {
-            type_value = lookup_table[i].integer;
-            found = true;
-        }
-    }
-
     for (int i = 0; i < sizeof(lookup_table) / sizeof(struct LookupTableEntry); i++)
     {
         if (strcmp(type1_input, lookup_table[i].string) == 0)
@@ -342,14 +371,61 @@ float singleVsDoubleTypeEffects(float type_chart[FAIRY + 1][FAIRY + 1])
     // Print all type effectiveness
     if (found)
     {
-        printf("\n%s type moves have the following effects:", type_input, type1_input, type2_input);
+        printf("\n%s type moves has the following effects on these %s double types:", type1_input, type2_input);
 
         printf("\n\n\t\tATTACK:\n");
+
+        // Prints all types that wont be affected
+        printf("\n\t       No Effect\n");
+        for (int i = 0; i < 18; i++)
+        {
+            if (type_chart[type1_value][type2_value] * type_chart[type1_value][i] == 0.0)
+            {
+                printf("\n\t    %s/%s - %.1f", type2_input, lookup_table[i].string, type_chart[type1_value][type2_value] * type_chart[type1_value][i]);
+            }
+        }
+
+        printf("\n\n\t-------------------------\n");
+
+        // Prints all types that wont be very effected
+        printf("\n\t   Not Very Effective\n");
+        for (int i = 0; i < 18; i++)
+        {
+            if (type_chart[type1_value][type2_value] * type_chart[type1_value][i] == 0.5 || type_chart[type1_value][type2_value] * type_chart[type1_value][i] == 0.25)
+            {
+                printf("\n\t    %s/%s - %.1f", type2_input, lookup_table[i].string, type_chart[type1_value][type2_value] * type_chart[type1_value][i]);
+            }
+        }
+
+        printf("\n\n\t-------------------------\n");
+
+        // Prints all types that will be neutrally effected
+        printf("\n\t\tNeutral\n");
+        for (int i = 0; i < 18; i++)
+        {
+            if (type_chart[type1_value][type2_value] * type_chart[type1_value][i] == 1.0)
+            {
+                printf("\n\t    %s/%s - %.1f", type2_input, lookup_table[i].string, type_chart[type1_value][type2_value] * type_chart[type1_value][i]);
+            }
+        }
+
+        printf("\n\n\t-------------------------\n");
+
+        // Prints all types that will be super effected
+        printf("\n\t     Super Effective\n");
+        for (int i = 0; i < 18; i++)
+        {
+            if (type_chart[type1_value][type2_value] * type_chart[type1_value][i] == 2.0 || type_chart[type1_value][type2_value] * type_chart[type1_value][i] == 4.0)
+            {
+                printf("\n\t    %s/%s - %.1f", type2_input, lookup_table[i].string, type_chart[type1_value][type2_value] * type_chart[type1_value][i]);
+            }
+        }
+
+        printf("\n\n\t-------------------------\n");
     }
 
     else
     {
-        printf("\nType '%s' does not exist or is spelt incorrectly\n", type_input);
         printf("\nType '%s' does not exist or is spelt incorrectly\n", type1_input);
         printf("\nType '%s' does not exist or is spelt incorrectly\n", type2_input);
     }
