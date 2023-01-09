@@ -39,7 +39,7 @@ void choice(int base1, int base2, int decimal, int binary_num[], char hex_num[])
     while (true)
     {
         // Asks for first base number
-        printf("\n\nWhat base of number would you like to convert from? (2 : binary) (8 : octal ) (10 : decimal): ");
+        printf("\n\nWhat base of number would you like to convert from? (2 : binary) (10 : decimal): ");
         scanf(" %d", &base1);
 
         // If valid base number
