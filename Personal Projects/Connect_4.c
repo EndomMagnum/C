@@ -36,12 +36,6 @@ void playerMove(char boardIndex[6][7], char free)
 
     printf("What is your move? (1-7): ");
     scanf(" %d", &move);
-
-    for (int i = 5; i >= 0; i--)
-    {
-        if (boardIndex[i][move - 1] == free)
-            boardIndex[i][move - 1] = 'X';
-    }
 }
 
 void main()

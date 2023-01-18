@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <unistd.h> // Imports "system("@cls")" and "system("pause")" function
+#include <unistd.h> // Imports "system("cls || clear");" and "system("pause")" function
 
 // Function Prototypes
 void printGameBoard(char gameBoardIndex[9]);
@@ -117,7 +117,7 @@ int checkWin(char gameBoardIndex[9], int player, char blank, int num_blank, char
         // Right diagonal win
         (gameBoardIndex[2] == playerLetter[*playerPtr - 1] && gameBoardIndex[4] == playerLetter[*playerPtr - 1] && gameBoardIndex[6] == playerLetter[*playerPtr - 1]))
     {
-        system("@cls");
+        system("cls || clear");
 
         // Prints board
         printGameBoard(gameBoardIndex);
@@ -129,7 +129,7 @@ int checkWin(char gameBoardIndex[9], int player, char blank, int num_blank, char
 
     else if (*num_blankPtr <= 0)
     {
-        system("@cls");
+        system("cls || clear");
 
         // Prints board
         printGameBoard(gameBoardIndex);
@@ -142,7 +142,7 @@ int checkWin(char gameBoardIndex[9], int player, char blank, int num_blank, char
 
 void main()
 {
-    system("@cls");
+    system("cls || clear");
 
     // Used to add X or O on the bored in relation the player move, and check win conditions,
     char gameBoardIndex[9] = {' ', ' ', ' ',
@@ -208,7 +208,7 @@ void main()
     // Game //
     while (playing == true)
     {
-        system("@cls");
+        system("cls || clear");
 
         // Prints the Board
         printGameBoard(gameBoardIndex);
